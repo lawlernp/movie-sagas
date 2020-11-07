@@ -1,7 +1,16 @@
 import React, { Component } from "react";
 import { HashRouter as Router, Route } from "react-router-dom";
+import { connect } from "react-redux";
 
 class Details extends Component {
+  componentDidMount() {
+    this.getDetails();
+  }
+
+  getDetails = () => {
+    this.props.dispatch({ type: "GET_DETAILS" });
+  };
+
   render() {
     return (
       <div className="App">
@@ -11,4 +20,8 @@ class Details extends Component {
   }
 }
 
-export default Details;
+const mapReduxStateToProps = (reduxState) => ({
+  reduxState,
+});
+
+export default connect(mapReduxStateToProps)(Details);

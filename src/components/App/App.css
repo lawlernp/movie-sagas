@@ -22,3 +22,16 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.moviesContainer {
+  list-style: none;
+  text-align: center;
+  display: inline-flex;
+  flex-wrap: wrap;
+  padding: 20px;
+  justify-content: space-between
+}
+
+.movies {
+  margin: 20px;
+}

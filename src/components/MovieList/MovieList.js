@@ -16,14 +16,16 @@ class MovieList extends Component {
     return (
       <div className="App">
         <h1>Movie List!</h1>
+        <ul className="moviesContainer">
         {this.props.reduxState.movies.map((movie) => {
           return (
-            <div key={movie.id}>
+            <li className="movie" id={movie.id}>
               <p>{movie.title}</p>
-              <img src={movie.poster}/>
-            </div>
+              <img alt={movie.title} src={movie.poster}/>
+            </li>
           );
         })}
+        </ul>
       </div>
     );
   }
