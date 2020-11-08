@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-
+import { connect } from "react-redux";
+import axios from "axios"
 class AddMovie extends Component {
   state = {
     description: "",
     title: "",
     poster: "",
-    genre: ""
+    genre_id: 1,
   };
 
   handleDescriptionChange = (event) => {
@@ -27,57 +28,80 @@ class AddMovie extends Component {
     });
   };
 
-  handleGenreChange = (event) => {      
+  handleGenreChange = (event) => {
     event.preventDefault();
     this.setState({
-      genre: event.target.value,
+      genre_id: +event.target.value,
     });
+  };
+
+  handleSubmit = () => {
+    axios
+      .post("/api/movie", this.state)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    this.props.history.push("/home");
+  };
+  handleCancel = () => {
+    this.props.history.push("/home");
   };
 
   render() {
     return (
       <div className="App">
-        <h1>AddMovie!</h1>
-        <input
-          onChange={this.handleTitleChange}
-          id="title"
-          type="text"
-          placeholder="Title"
-          required
-        />
-        <input
-          onChange={this.handlePosterChange}
-          id="poster"
-          type="text"
-          placeholder="Poster URL"
-        />
-        <textarea
-          onChange={this.handleDescriptionChange}
-          id="description"
-          name="description"
-          rows="4"
-          cols="50"
-          required
-        ></textarea>
-        <label for="genres">Choose a genre:</label>
-        <select onChange={this.handleGenreChange} name="genres" id="genres">
-          <option value="Adventure">Adventure</option>
-          <option value="Animated">Animated</option>
-          <option value="Biographical">Biographical</option>
-          <option value="Comedy">Comedy</option>
-          <option value="Disaster">Disaster</option>
-          <option value="Drama">Drama</option>
-          <option value="Epic">Epic</option>
-          <option value="Fantasy">Fantasy</option>
-          <option value="Musical">Musical</option>
-          <option value="Romantic">Romantic</option>
-          <option value="Science Fiction">Science Fiction</option>
-          <option value="Space-Opera">Space-Opera</option>
-          <option value="Superhero">Superhero</option>
-        </select>
+        <h1>Add a Movie!</h1>
+        <form>
+          <input
+            onChange={this.handleTitleChange}
+            id="title"
+            type="text"
+            placeholder="Title"
+            required
+          />
+          <input
+            onChange={this.handlePosterChange}
+            id="poster"
+            type="text"
+            placeholder="Poster URL"
+          />
+          <textarea
+            onChange={this.handleDescriptionChange}
+            id="description"
+            name="description"
+            rows="4"
+            cols="50"
+            required
+          ></textarea>
+          <label for="genres">Choose a genre:</label>
+          <select onChange={this.handleGenreChange} name="genres" id="genres">
+            <option value="1">Adventure</option>
+            <option value="2">Animated</option>
+            <option value="3">Biographical</option>
+            <option value="4">Comedy</option>
+            <option value="5">Disaster</option>
+            <option value="6">Drama</option>
+            <option value="7">Epic</option>
+            <option value="8">Fantasy</option>
+            <option value="9">Musical</option>
+            <option value="10">Romantic</option>
+            <option value="11 Fiction">Science Fiction</option>
+            <option value="12">Space-Opera</option>
+            <option value="13">Superhero</option>
+          </select>
+          <button onClick={this.handleSubmit}>Submit</button>
+          <button onClick={this.handleCancel}>Cancel</button>
+        </form>
       </div>
     );
   }
 }
 
-export default AddMovie;
+const mapReduxStateToProps = (reduxState) => ({
+  reduxState,
+});
+
+export default connect(mapReduxStateToProps)(AddMovie);

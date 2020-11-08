@@ -60,7 +60,16 @@ const details = (state = [], action) => {
 
 const id = (state = [], action) => {
   switch (action.type) {
-    case "SET_ID":        
+    case "SET_ID":
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
+const addMovie = (state = {}, action) => {
+  switch (action.type) {
+    case "ADD_MOVIE":
       return action.payload;
     default:
       return state;
@@ -69,13 +78,14 @@ const id = (state = [], action) => {
 
 // Create one store that all components can use
 const storeInstance = createStore(
-    combineReducers({
-        movies,
-        details,
-        id,
-    }),
-    // Add sagaMiddleware to our store
-    applyMiddleware(sagaMiddleware, logger),
+  combineReducers({
+    movies,
+    details,
+    id,
+    addMovie,
+  }),
+  // Add sagaMiddleware to our store
+  applyMiddleware(sagaMiddleware, logger)
 );
 
 // Pass rootSaga into our sagaMiddleware

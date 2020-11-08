@@ -3,8 +3,6 @@ import { connect } from "react-redux";
 
 
 class MovieList extends Component {
-
-
   componentDidMount() {
     this.getMovies();
   }
@@ -14,24 +12,33 @@ class MovieList extends Component {
   };
 
   handleClick = (id) => {
-    console.log('id', id);
+    console.log("id", id);
     this.props.dispatch({ type: "SET_ID", payload: id });
     this.props.history.push("/details");
-  }
+  };
+
+  handleAdd = () => {
+    this.props.history.push("/add");
+  };
 
   render() {
     return (
       <div className="App">
-        <h1>Movie List!</h1>
+        <button onClick={this.handleAdd}>Add Movie</button>
+        <h2>Movie List!</h2>
         <ul className="moviesContainer">
-        {this.props.reduxState.movies.map((movie) => {
-          return (
-            <li onClick={() => this.handleClick(movie.id)} className="movie" id={movie.id}>
-              <p>{movie.title}</p>
-              <img alt={movie.title} src={movie.poster}/>
-            </li>
-          );
-        })}
+          {this.props.reduxState.movies.map((movie) => {
+            return (
+              <li
+                onClick={() => this.handleClick(movie.id)}
+                className="movie"
+                id={movie.id}
+              >
+                <p>{movie.title}</p>
+                <img alt={movie.title} src={movie.poster} />
+              </li>
+            );
+          })}
         </ul>
       </div>
     );
