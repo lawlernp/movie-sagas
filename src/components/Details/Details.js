@@ -11,19 +11,15 @@ class Details extends Component {
   };
 
   render() {
-    //   const id = this.props.reduxState.id
+      const id = this.props.reduxState.id
     return (
       <div className="App">
         <h1>Details!</h1>
-        {/* {JSON.stringify(
-          this.props.reduxState.details
-        )} */}
+        <h1>{this.props.reduxState.movies[id - 1].title}</h1>
+        <img src = {this.props.reduxState.movies[id - 1].poster}/>
+        <p>{this.props.reduxState.movies[id - 1].description}</p>
         {this.props.reduxState.details.map((movie) => {
-           return <>{movie.movies_id === this.props.reduxState.id ?
-            <div><p>{movie.title}</p><p>{movie.description}</p><img src={movie.poster}/></div>
-            :
-            <></>}
-        </>
+          return <>{movie.movies_id === id ? <p>{movie.name}</p> : <></>}</>;
         })}
       </div>
     );
