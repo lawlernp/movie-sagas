@@ -54,7 +54,7 @@ class AddMovie extends Component {
     return (
       <div className="App">
         <h1>Add a Movie!</h1>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <input
             onChange={this.handleTitleChange}
             id="title"
@@ -67,6 +67,7 @@ class AddMovie extends Component {
             id="poster"
             type="text"
             placeholder="Poster URL"
+            required
           />
           <textarea
             onChange={this.handleDescriptionChange}
@@ -77,7 +78,12 @@ class AddMovie extends Component {
             required
           ></textarea>
           <label for="genres">Choose a genre:</label>
-          <select onChange={this.handleGenreChange} name="genres" id="genres">
+          <select
+            onChange={this.handleGenreChange}
+            name="genres"
+            id="genres"
+            required
+          >
             <option value="1">Adventure</option>
             <option value="2">Animated</option>
             <option value="3">Biographical</option>
@@ -92,7 +98,7 @@ class AddMovie extends Component {
             <option value="12">Space-Opera</option>
             <option value="13">Superhero</option>
           </select>
-          <button onClick={this.handleSubmit}>Submit</button>
+          <input type="submit" value="Submit"></input>
           <button onClick={this.handleCancel}>Cancel</button>
         </form>
       </div>
