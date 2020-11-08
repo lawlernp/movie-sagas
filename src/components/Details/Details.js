@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { HashRouter as Router, Route } from "react-router-dom";
 import { connect } from "react-redux";
 
 class Details extends Component {
@@ -12,9 +11,13 @@ class Details extends Component {
   };
 
   render() {
+      const id = this.props.reduxState.id
     return (
       <div className="App">
         <h1>Details!</h1>
+        {JSON.stringify(
+          this.props.reduxState.details
+        )}
       </div>
     );
   }

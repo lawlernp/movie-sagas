@@ -29,9 +29,10 @@
   display: inline-flex;
   flex-wrap: wrap;
   padding: 20px;
-  justify-content: space-between
 }
 
-.movies {
+.movie {
+  width: 200px;
   margin: 20px;
+  word-wrap: normal
 }

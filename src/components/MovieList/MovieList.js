@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import { HashRouter as Router, Route } from "react-router-dom";
 import { connect } from "react-redux";
 
 
 class MovieList extends Component {
+
+
   componentDidMount() {
     this.getMovies();
   }
@@ -12,6 +13,12 @@ class MovieList extends Component {
     this.props.dispatch({ type: "GET_MOVIES" });
   };
 
+  handleClick = (id) => {
+    console.log('id', id);
+    this.props.dispatch({ type: "SET_ID", payload: id });
+    this.props.history.push("/details");
+  }
+
   render() {
     return (
       <div className="App">
@@ -19,7 +26,7 @@ class MovieList extends Component {
         <ul className="moviesContainer">
         {this.props.reduxState.movies.map((movie) => {
           return (
-            <li className="movie" id={movie.id}>
+            <li onClick={() => this.handleClick(movie.id)} className="movie" id={movie.id}>
               <p>{movie.title}</p>
               <img alt={movie.title} src={movie.poster}/>
             </li>
