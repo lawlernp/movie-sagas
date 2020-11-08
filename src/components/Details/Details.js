@@ -18,7 +18,7 @@ class Details extends Component {
       const id = this.props.reduxState.id
     return (
       <div className="App">
-        <button onClick={this.handleClick}>Home</button>
+        <button onClick={this.handleClick}>Back to List</button>
         <h1>{this.props.reduxState.movies[id - 1].title}</h1>
         <img
           alt={this.props.reduxState.movies[id - 1].title}

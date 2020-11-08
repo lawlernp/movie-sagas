@@ -25,7 +25,7 @@ class MovieList extends Component {
     return (
       <div className="App">
         <button onClick={this.handleAdd}>Add Movie</button>
-        <h2>Movie List!</h2>
+        <h2>Movie List</h2>
         <p>Click on a poster for more information about that movie</p>
         <ul className="moviesContainer">
           {this.props.reduxState.movies.map((movie) => {
