@@ -8,19 +8,22 @@ class Details extends Component {
 
   getDetails = () => {
     this.props.dispatch({ type: "GET_DETAILS" });
+    this.props.dispatch({ type: "GET_MOVIES" });
   };
 
   handleClick = () => {
-      this.props.history.push('/home')
-  }
+    this.props.history.push("/home");
+  };
 
   render() {
-      const id = this.props.reduxState.id
+    const id = this.props.reduxState.id;
     return (
       <div className="App">
         <button onClick={this.handleClick}>Back to List</button>
         <h1>{this.props.reduxState.movies[id - 1].title}</h1>
         <img
+          width="185"
+          height="272"
           alt={this.props.reduxState.movies[id - 1].title}
           src={this.props.reduxState.movies[id - 1].poster}
         />

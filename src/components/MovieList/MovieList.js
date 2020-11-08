@@ -36,7 +36,7 @@ class MovieList extends Component {
                 id={movie.id}
               >
                 <h3>{movie.title}</h3>
-                <img alt={movie.title} src={movie.poster} />
+                <img width="185" height="272" alt={movie.title} src={movie.poster} />
               </li>
             );
           })}
