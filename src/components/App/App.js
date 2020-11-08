@@ -15,12 +15,14 @@ class App extends Component {
         <div className="App">
           <br />
           <br />
-          <br />
           <h1>Movies!</h1>
           <Route exact path="/add" component={AddMovie} />
           <Route exact path="/details" component={Details} />
           <Route exact path="/" component={MovieList} />
           <Route exact path="/home" component={MovieList} />
+          <br />
+          <br /> 
+          <br />
         </div>
       </Router>
     );

@@ -1,7 +1,8 @@
 .App {
   text-align: center;
   background-color: DARKSLATEGRAY;
-  color: ALICEBLUE
+  color: ALICEBLUE;
+  font-family: Impact;
 }
 
 
@@ -37,4 +38,10 @@
   width: 200px;
   margin: 20px;
   word-wrap: normal
+}
+
+.text {
+    font-family: Arial;
+    list-style: none;
+
 }

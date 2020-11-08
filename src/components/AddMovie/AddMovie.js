@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import axios from "axios"
+import axios from "axios";
 class AddMovie extends Component {
   state = {
     description: "",
@@ -54,8 +54,11 @@ class AddMovie extends Component {
     return (
       <div className="App">
         <h1>Add a Movie!</h1>
+        <br />
+        <br />
         <form onSubmit={this.handleSubmit}>
           <input
+            className="text"
             onChange={this.handleTitleChange}
             id="title"
             type="text"
@@ -63,20 +66,26 @@ class AddMovie extends Component {
             required
           />
           <input
+            className="text"
             onChange={this.handlePosterChange}
             id="poster"
             type="text"
             placeholder="Poster URL"
             required
           />
+          <br />
+          <br />
           <textarea
+            className="text"
             onChange={this.handleDescriptionChange}
             id="description"
             name="description"
+            placeholder="Description"
             rows="4"
             cols="50"
             required
           ></textarea>
+          <br />
           <label for="genres">Choose a genre:</label>
           <select
             onChange={this.handleGenreChange}
@@ -98,6 +107,8 @@ class AddMovie extends Component {
             <option value="12">Space-Opera</option>
             <option value="13">Superhero</option>
           </select>
+          <br />
+          <br />
           <input type="submit" value="Submit"></input>
           <button onClick={this.handleCancel}>Cancel</button>
         </form>

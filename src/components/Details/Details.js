@@ -19,16 +19,32 @@ class Details extends Component {
     return (
       <div className="App">
         <button onClick={this.handleClick}>Home</button>
-        <h2>Details!</h2>
         <h1>{this.props.reduxState.movies[id - 1].title}</h1>
         <img
           alt={this.props.reduxState.movies[id - 1].title}
           src={this.props.reduxState.movies[id - 1].poster}
         />
-        <p>{this.props.reduxState.movies[id - 1].description}</p>
-        {this.props.reduxState.details.map((movie) => {
-          return <>{movie.movies_id === id ? <p>{movie.name}</p> : <></>}</>;
-        })}
+        <h2>Details</h2>
+        <p className="text">
+          {this.props.reduxState.movies[id - 1].description}
+        </p>
+        <br />
+        <p className="text">
+          {this.props.reduxState.movies[id - 1].title} falls into these genres:
+        </p>
+        <ul>
+          {this.props.reduxState.details.map((movie) => {
+            return (
+              <>
+                {movie.movies_id === id ? (
+                  <li className="text">{movie.name}</li>
+                ) : (
+                  <></>
+                )}
+              </>
+            );
+          })}
+        </ul>
       </div>
     );
   }

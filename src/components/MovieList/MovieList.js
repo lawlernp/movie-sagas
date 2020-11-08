@@ -26,6 +26,7 @@ class MovieList extends Component {
       <div className="App">
         <button onClick={this.handleAdd}>Add Movie</button>
         <h2>Movie List!</h2>
+        <p>Click on a poster for more information about that movie</p>
         <ul className="moviesContainer">
           {this.props.reduxState.movies.map((movie) => {
             return (
@@ -34,7 +35,7 @@ class MovieList extends Component {
                 className="movie"
                 id={movie.id}
               >
-                <p>{movie.title}</p>
+                <h3>{movie.title}</h3>
                 <img alt={movie.title} src={movie.poster} />
               </li>
             );
