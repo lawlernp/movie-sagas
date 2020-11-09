@@ -8,7 +8,7 @@ class AddMovie extends Component {
     poster: "",
     genre_id: 1,
   };
-
+// track the changes of each input and set them to the state
   handleDescriptionChange = (event) => {
     event.preventDefault();
     this.setState({
@@ -34,7 +34,7 @@ class AddMovie extends Component {
       genre_id: +event.target.value,
     });
   };
-
+// on Submit, POSTS state to DB and routes back to MovieList to see added movie on DOM
   handleSubmit = () => {
     axios
       .post("/api/movie", this.state)

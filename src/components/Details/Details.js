@@ -5,12 +5,12 @@ class Details extends Component {
   componentDidMount() {
     this.getDetails();
   }
-
+// refreshes movie GET and hits junction GET and sets them to the redux store
   getDetails = () => {
     this.props.dispatch({ type: "GET_DETAILS" });
     this.props.dispatch({ type: "GET_MOVIES" });
   };
-
+// routes back to homepage/MovieList
   handleClick = () => {
     this.props.history.push("/home");
   };
