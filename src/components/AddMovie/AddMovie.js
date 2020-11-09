@@ -44,6 +44,7 @@ class AddMovie extends Component {
       .catch((error) => {
         console.log(error);
       });
+    this.props.dispatch({ type: "GET_MOVIES" });
     this.props.history.push("/home");
   };
   handleCancel = () => {
